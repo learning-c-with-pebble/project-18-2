@@ -11,17 +11,16 @@ static GPoint center;
 
 
 // Draw concentric circles
-    static void draw_circles(GContext *ctx) {
-      GColor color = GColorBlack;
-      graphics_context_set_stroke_color(ctx, GColorBlack);
-      for(int radius = screen_width / 2; radius >= 0; radius -= 10) {
-        color.argb += 5;
-        graphics_context_set_fill_color(ctx, color);      
-        graphics_fill_circle(ctx, center, radius);
-        graphics_draw_circle(ctx, center, radius);
-      }
-    }
-
+static void draw_circles(GContext *ctx) {
+  GColor color = GColorBlack;
+  graphics_context_set_stroke_color(ctx, GColorBlack);
+  for(int radius = screen_width / 2; radius >= 0; radius -= 10) {
+    color.argb += 5;
+    graphics_context_set_fill_color(ctx, color);      
+    graphics_fill_circle(ctx, center, radius);
+    graphics_draw_circle(ctx, center, radius);
+  }
+}
 
 static void drawing_layer_update_callback(Layer *me, GContext *ctx) { 
   draw_circles(ctx);
